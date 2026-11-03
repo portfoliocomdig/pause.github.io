@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pausa: wireframes clicáveis da Sprint 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--v:#5B4BDB;--am:#FFB020;--me:#26D0A8;--bg:#F3F5FA;--sf:#FFFFFF;--tx:#141B34;--t2:#4B5469;--ln:#D5DAE6;--so:#E6E3FB;--cv:#E9ECF3;--onb:#FFFFFF;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1326;--sf:#1B2340;--tx:#F3F5FA;--t2:#B7BFD6;--ln:#2F3A5E;--so:#2A2F5E;--cv:#161C34;--v:#8B7DFF;--onb:#0E1326}}
+:root[data-theme="dark"]{--bg:#0E1326;--sf:#1B2340;--tx:#F3F5FA;--t2:#B7BFD6;--ln:#2F3A5E;--so:#2A2F5E;--cv:#161C34;--v:#8B7DFF;--onb:#0E1326}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 Poppins,system-ui,sans-serif}
+.s{font-family:Lora,Georgia,serif}
+header{display:flex;align-items:center;gap:12px;padding:14px 20px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0}
+.tabs{display:flex;gap:8px;margin-left:auto}
+.tabs button,.pill{font:500 13px Poppins,sans-serif;border:2px solid var(--v);background:transparent;color:var(--v);border-radius:999px;padding:7px 16px;cursor:pointer}
+.tabs button[aria-selected="true"],.pill.on{background:var(--v);color:var(--onb)}
+button:focus-visible{outline:3px solid var(--am);outline-offset:2px}
+.lay{display:flex;gap:20px;padding:0 20px 28px;align-items:flex-start;flex-wrap:wrap}
+#mapw{flex:1 1 560px;min-width:0;height:min(78vh,760px);overflow:auto;background:var(--cv);border:1px solid var(--ln);border-radius:16px}
+#cv{position:relative;width:1440px;height:1190px}
+#cv svg{position:absolute;inset:0;pointer-events:none}
+.fr{position:absolute;width:180px;cursor:pointer}
+.fw{width:180px;height:280px;overflow:hidden;border:2px solid var(--ln);border-radius:14px;background:#fff;position:relative}
+.fr:hover .fw,.fr.sel .fw{border-color:var(--v)}
+.fw .th{width:360px;height:560px;transform:scale(.5);transform-origin:0 0;pointer-events:none}
+.fr b{display:block;font-size:12px;margin-top:6px}
+.fr small{color:var(--t2);font-size:11px;display:block;line-height:1.3}
+.api{position:absolute;width:180px;height:110px;border:2px dashed var(--am);border-radius:14px;background:var(--sf);padding:10px;cursor:pointer;font-size:12px}
+.api.sel{border-style:solid}
+.elab{position:absolute;transform:translate(-50%,-50%);background:var(--sf);border:1.5px solid var(--v);color:var(--v);font:500 11px Poppins,sans-serif;padding:3px 9px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.elab.sel{background:var(--v);color:var(--onb)}
+#pw{display:none;flex:1 1 380px;justify-content:center;gap:20px;flex-wrap:wrap}
+#pw.on{display:flex}
+.dev{width:380px;max-width:100%}
+.dv{width:100%;background:#1D2438;border-radius:34px;padding:10px}
+.scr{height:560px;border-radius:24px;overflow:auto;background:#EDEFF3;position:relative}
+.ctl{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;justify-content:center}
+#side{flex:1 1 320px;max-width:520px;background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:16px 18px}
+#side h2{font-size:17px;margin:0 0 6px}
+#side p,#side li{font-family:Lora,Georgia,serif;font-size:14px;color:var(--t2);margin:0 0 8px}
+#side ul{padding-left:18px;margin:6px 0 10px}
+#side h3{font-size:13px;margin:12px 0 4px}
+pre{background:#141B34;color:#E6E3FB;border-radius:10px;padding:10px;font-size:11.5px;line-height:1.45;overflow:auto;margin:0 0 8px;white-space:pre-wrap;word-break:break-word}
+.fk{display:inline-block;background:var(--am);color:#141B34;font:700 11px Poppins;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+/* telas */
+.wf{width:360px;min-height:560px;background:#EDEFF3;color:#3A4152;font:13px/1.4 Poppins,sans-serif;position:relative}
+.wf .h{display:flex;align-items:center;gap:8px;background:#fff;padding:12px 16px;font-weight:700;color:#141B34}
+.wf .h .g{margin-left:auto;font-size:17px}
+.wf .b{padding:14px 16px}
+.wf h4{margin:10px 0 6px;font-size:14px;color:#141B34}
+.bx{background:#fff;border:1.5px solid #9AA3B8;border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.bx small{display:block;color:#5A6275;font-size:11.5px}
+.ln{height:7px;background:#C9CEDA;border-radius:3px;margin:7px 0}
+.btn{display:inline-block;border:1.5px solid #5B4BDB;border-radius:10px;padding:8px 14px;font-weight:500;color:#5B4BDB;background:#fff;margin:4px 6px 4px 0;font-size:13px}
+.btn.p{background:#5B4BDB;color:#fff}.btn.d{opacity:.45}
+.lv{border-radius:999px;text-align:center;padding:7px;font-weight:700;margin-bottom:8px;font-size:13px}
+.av{background:#E9E7FB;border-radius:10px;padding:9px 11px;margin-top:10px;font-size:12px}.av b{color:#5B4BDB;display:block}
+.chip{display:inline-block;border:1.5px solid #9AA3B8;border-radius:99px;padding:3px 10px;margin:0 4px 4px 0;font-size:11.5px;background:#fff}
+.page{background:#fff;border:1.5px dashed #9AA3B8;border-radius:10px;padding:10px;margin-bottom:10px}
+.page mark{background:#FFB020;padding:1px 3px;border-radius:3px;color:#141B34}
+.ctrl{border:1.5px dashed #FFB020;background:#FFF7E6;border-radius:10px;padding:8px 12px;margin:6px 6px 0 0;display:inline-block;font-size:12px;font-weight:500}
+.bb{max-width:88%;background:#fff;border:1.5px solid #9AA3B8;border-radius:14px;padding:9px 11px;margin:8px 0}
+.bb.me{margin-left:auto;background:#E9E7FB}.bb ol{margin:4px 0 0;padding-left:18px}
+.qr{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.hs{cursor:pointer}
+.hint .hs,.flash .hs{outline:2.5px dashed #5B4BDB;outline-offset:2px;background-color:rgba(91,75,219,.14)}
+.hs:hover{outline:2.5px solid #5B4BDB;outline-offset:2px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#141B34;color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw;text-align:center}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<header>
+ <svg width="30" height="34" viewBox="0 0 120 130" aria-hidden="true"><rect width="120" height="104" rx="32" fill="#5B4BDB"/><path d="M20 92 L12 126 L54 98 Z" fill="#5B4BDB"/><rect x="37" y="25" width="17" height="54" rx="8.5" fill="#fff"/><rect x="66" y="25" width="17" height="54" rx="8.5" fill="#26D0A8"/></svg>
+ <h1>pausa <span class="s" style="font-weight:400;font-style:italic;font-size:13px;color:var(--t2)">wireframes clicáveis da Sprint 1</span></h1>
+ <div class="tabs" role="tablist" aria-label="Modo"><button role="tab" id="tm" aria-selected="true">Mapa do fluxo</button><button role="tab" id="tp" aria-selected="false">Protótipo clicável</button></div>
+</header>
+<div class="lay">
+ <div id="mapw"><div id="cv"></div></div>
+ <div id="pw"><div class="dev"><div class="dv"><div class="scr" id="scr"></div></div>
+  <div class="ctl"><button class="pill" id="bk">Voltar</button><button class="pill" id="rs">Reiniciar</button><button class="pill" id="hn" aria-pressed="false">Mostrar áreas clicáveis</button><button class="pill" id="vm">Ver no mapa</button></div></div></div>
+ <aside id="side" aria-live="polite"></aside>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s);
+const LG='<svg width="18" height="20" viewBox="0 0 120 130"><rect width="120" height="104" rx="32" fill="#5B4BDB"/><path d="M20 92 L12 126 L54 98 Z" fill="#5B4BDB"/><rect x="37" y="25" width="17" height="54" rx="8.5" fill="#fff"/><rect x="66" y="25" width="17" height="54" rx="8.5" fill="#26D0A8"/></svg>';
+const H=(g)=>`<div class="h">${LG} pausa${g?'<span class="g hs" data-go="E7" title="Configurar chave">⚙</span>':'<span class="g">⚙</span>'}</div>`;
+const AV='<div class="av"><b>Isto não é um veredito.</b>Sem resultado não quer dizer que seja verdadeiro.</div>';
+const ln=(n)=>'<div class="ln"></div>'.repeat(n);
+const CL="URGENTE: o candidato X vai cancelar o título de quem não compartilhar esta mensagem hoje!";
+const S={
+E1:()=>`<div class="wf">${H(1)}<div class="b"><div class="page"><small>Página aberta no navegador</small><p style="margin:6px 0"><mark class="hs" data-go="E2">${CL}</mark></p></div>
+<h4>Verificar um texto</h4><div class="bx" style="min-height:70px"><small>Selecione um texto na página ou cole aqui</small></div>
+<span class="btn p d">Verificar</span><span class="btn hs" data-go="E7">Configurar chave</span>${AV}</div></div>`,
+E2:()=>`<div class="wf">${H(1)}<div class="b"><h4>Verificar um texto</h4><div class="bx"><small>Texto vindo da seleção (editável)</small>${CL}</div>
+<span class="btn p hs" data-go="E3">Verificar</span><span class="btn hs" data-go="E1">Limpar</span>${AV}</div></div>`,
+E3:()=>`<div class="wf">${H(0)}<div class="b"><div class="lv" style="background:#D5DAE6">Consultando fontes…</div>
+<div class="bx">Google Fact Check Tools API<small>Buscando checagens publicadas…</small></div><div class="bx">GDELT DOC 2.0<small>Buscando cobertura de imprensa…</small></div>
+<h4>Controles do protótipo</h4><span class="ctrl hs" data-go="E4">Simular: resposta com resultados</span><span class="ctrl hs" data-go="E5">Simular: resposta vazia</span></div></div>`,
+E4:()=>`<div class="wf">${H(1)}<div class="b"><div class="lv" style="background:#5B4BDB;color:#fff">Checagem encontrada</div>
+<h4>1. O que as agências dizem</h4><div class="bx"><b style="color:#5B4BDB">Título de eleitor não é cancelado por não compartilhar</b><small>Agência de exemplo A classificou como: “enganoso”</small></div>
+<h4>2. Quem mais noticiou (3 meses)</h4><small>Aparição mais antiga encontrada: 12/10/2026</small><div class="bx"><b>veiculo-exemplo.com.br</b> <span class="chip">lista confiável</span><small>12/10</small></div>
+<h4>3. Conferir você mesmo</h4><span class="chip">TSE</span><span class="chip">Câmara</span><span class="chip">Senado</span><span class="chip">IBGE</span><span class="chip">Aos Fatos</span><span class="chip">Lupa</span>
+<h4>4. Preservar evidência</h4><span class="btn hs" data-go="E6">Copiar relatório</span><span class="btn hs" data-go="E6">Arquivar página</span><span class="btn hs" data-go="E1">Nova verificação</span>${AV}</div></div>`,
+E5:()=>`<div class="wf">${H(1)}<div class="b"><div class="lv" style="background:#D5DAE6">Nada encontrado</div><div class="bx"><b style="color:#141B34">Nada encontrado ainda.</b>${ln(2)}<small style="color:#5B4BDB;font-weight:500">Isso não significa que seja verdade.</small></div>
+<h4>O que fazer agora</h4><div class="bx">Buscar a frase nas agências de checagem</div><div class="bx">Procurar a data e a fonte original</div><div class="bx">Comparar veículos de lados diferentes</div>
+<span class="btn hs" data-go="E1">Nova verificação</span>${AV}</div></div>`,
+E6:()=>`<div class="wf">${H(0)}<div class="b"><h4>Evidência salva</h4><div class="bx"><b style="color:#141B34">Relatório</b>${ln(2)}<small>Data e hora: 02/11/2026 18:40</small><small>Página de origem: https://…</small>${ln(3)}</div>
+<span class="btn p" data-toast="No produto, o relatório vai para a área de transferência">Copiar relatório</span><span class="btn" data-toast="No produto, abre o Wayback Machine">Arquivar página</span><span class="btn hs" data-go="E4">Voltar ao resultado</span>
+<div class="bx" style="background:#E6FAF4"><b>Dica</b><small>Faça também um print com data e hora visíveis.</small></div>${AV}</div></div>`,
+E7:()=>`<div class="wf">${H(0)}<div class="b"><h4>Chave da Google Fact Check API</h4><div class="bx"><small>Cole a chave criada no Google Cloud. Ela fica só neste navegador.</small><div class="bx" style="margin:8px 0 0">••••••••••••••</div></div>
+<span class="btn p hs" data-go="E1">Salvar</span><div class="bx"><small>Como criar a chave: ativar “Fact Check Tools API” no Google Cloud e criar uma chave de API (gratuita).</small></div></div></div>`,
+B1:()=>`<div class="wf" style="background:#EDEFF3"><div class="h">${LG} Pausa (bot)</div><div class="b"><div class="bb">Oi! Eu ajudo você a fazer uma pausa antes de passar uma mensagem adiante. Encaminhe ou cole o texto e eu procuro o que agências e imprensa dizem. Não dou veredito.</div>
+<div class="qr"><span class="btn hs" data-go="B2">Encaminhar mensagem suspeita</span><span class="btn hs" data-go="B3">A mensagem sumiu</span><span class="btn" data-toast="Guia dos 5 sinais (carrossel educativo)">Entender os sinais</span></div></div></div>`,
+B2:()=>`<div class="wf"><div class="h">${LG} Pausa (bot)</div><div class="b"><div class="bb me"><small>Encaminhada</small><br>${CL}</div><div class="bb">Recebi. Procurando em agências de checagem e na imprensa…</div>
+<div class="bb"><b style="color:#5B4BDB">Nível: checagem encontrada</b><br>1. Agência de exemplo A: “enganoso”.<br>2. Agência de exemplo B: “falso”.<br>Imprensa: 3 matérias, a mais antiga de 12/10.<br><b>Isto não é um veredito.</b></div>
+<div class="qr"><span class="btn" data-toast="Evidência salva: texto, links, data e hora">Salvar evidência</span><span class="btn hs" data-go="B1">Voltar ao menu</span></div></div></div>`,
+B3:()=>`<div class="wf"><div class="h">${LG} Pausa (bot)</div><div class="b"><div class="bb me">A mensagem sumiu</div><div class="bb">Calma, dá para registrar o que você viu:<ol><li>Faça print com data e hora visíveis.</li><li>Anote quem enviou, onde e quando.</li><li>Não apague a conversa.</li><li>Guarde cópias recebidas de outras pessoas.</li></ol></div>
+<div class="qr"><span class="btn" data-toast="Registro criado. Leve-o à plataforma e à Justiça Eleitoral">Salvar evidência</span><span class="btn hs" data-go="B1">Voltar ao menu</span></div></div></div>`};
+const REQA='GET https://factchecktools.googleapis.com/v1alpha1/claims:search\n  ?query=URGENTE: o candidato X vai cancelar o título…\n  &languageCode=pt&pageSize=10&key=SUA_CHAVE';
+const REQB='GET https://api.gdeltproject.org/api/v2/doc/doc\n  ?query=compartilhar candidato cancelar mensagem sourcelang:portuguese\n  &mode=artlist&format=json&timespan=3months&maxrecords=15';
+const RESA='{"claims":[{"text":"…cancelar o título de quem não compartilhar…","claimReview":[{"publisher":{"name":"Agência de exemplo A"},"title":"Título de eleitor não é cancelado…","url":"https://agencia-exemplo-a.com.br/…","textualRating":"Enganoso"}]}]}';
+const RESB='{"articles":[{"title":"Mensagem circula em grupos…","url":"https://veiculo-exemplo.com.br/…","domain":"veiculo-exemplo.com.br","seendate":"20261012T120000Z"}]}';
+const N={
+E1:{n:"Tela inicial",t:"Abre ao clicar no ícone da extensão. Sem texto, o botão Verificar fica desabilitado.",a:[["Texto destacado da página","E2","A seleção vai para o campo da extensão."],["Configurar chave","E7","Abre a tela da chave da API."]]},
+E2:{n:"Com texto selecionado",t:"O campo já vem preenchido com a seleção e pode ser editado.",a:[["Verificar","E3","Dispara as consultas às APIs A e B ao mesmo tempo."],["Limpar","E1","Volta ao estado vazio."]]},
+E3:{n:"Consultando fontes",t:"Estado de carregamento. Mostra qual fonte está sendo consultada.",a:[["Resposta com resultados","E4","Chegou ao menos uma checagem ou matéria."],["Resposta vazia","E5","Nenhuma checagem nem matéria encontrada."]],api:1},
+E4:{n:"Resultado",t:"Quatro blocos em ordem fixa. A classificação aparece sempre atribuída à agência.",a:[["Copiar relatório / Arquivar página","E6","Preserva a evidência."],["Nova verificação","E1","Recomeça."]],api:2},
+E5:{n:"Sem resultado",t:"Estado vazio com orientação. Não sugere que o conteúdo seja verdadeiro.",a:[["Nova verificação","E1","Recomeça."]],api:3},
+E6:{n:"Evidência salva",t:"Relatório com texto, data e hora, página de origem e links encontrados.",a:[["Voltar ao resultado","E4","Retorna ao resultado."],["Copiar / Arquivar","","No produto, copia o relatório e abre o Wayback Machine."]]},
+E7:{n:"Configurar chave",t:"Onde se cola a chave gratuita da Google Fact Check Tools API.",a:[["Salvar","E1","Guarda a chave no navegador e volta ao início."]]},
+B1:{n:"Bot: menu inicial",t:"Mesmo fluxo da extensão, em conversa. MVP no Telegram; WhatsApp na próxima Sprint.",a:[["Encaminhar mensagem suspeita","B2","Envia o texto às mesmas consultas A e B."],["A mensagem sumiu","B3","Abre o guia de preservação de evidência."]]},
+B2:{n:"Bot: verificação",t:"Resposta no mesmo formato da extensão: nível, checagens atribuídas, imprensa e aviso.",a:[["Voltar ao menu","B1","Retorna ao início."],["Salvar evidência","","Registra texto, links, data e hora."]],api:2},
+B3:{n:"Bot: a mensagem sumiu",t:"Quatro passos práticos para quem viu conteúdo que foi apagado.",a:[["Voltar ao menu","B1","Retorna ao início."]]}};
+const ED={e1:"O clique no texto destacado envia a seleção para o campo da extensão.",e2:"O clique em Verificar dispara, ao mesmo tempo, a consulta à API A (checagens) e à API B (imprensa).",e3:"Quando ao menos uma fonte devolve conteúdo, a extensão monta o resultado em quatro blocos.",e4:"A extensão consulta as APIs A e B. Se uma falhar, o erro aparece só no bloco afetado.",e5:"Se as duas respostas vierem vazias, aparece a tela “Nada encontrado”, sem alarme e sem aprovação.",e6:"Copiar o relatório e arquivar a página preservam a evidência antes que algo suma.",e7:"A chave é guardada só no navegador da pessoa.",e8:"O bot usa as mesmas consultas da extensão.",e9:"O guia de preservação de evidência é independente das APIs."};
+const POS={E1:[40,70],E2:[330,70],E3:[620,70],E4:[910,70],E6:[1200,70],E7:[40,440],E5:[910,440],B1:[40,810],B2:[330,810],B3:[620,810]},APIP=[620,500];
+const EG=[["E1","r","E2","l","Seleciona o texto","e1"],["E2","r","E3","l","Clica em Verificar","e2"],["E3","r","E4","l","Há resultados","e3"],["E3","b","API","t","Consulta A e B","e4",1],["API","r","E5","l","Sem resultados","e5"],["E4","r","E6","l","Copiar ou arquivar","e6"],["E1","b","E7","t","Configurar chave","e7"],["B1","r","B2","l","Encaminha a mensagem","e8"],["B1","b","B3","b","A mensagem sumiu","e9"]];
+function anc(id,s){let x,y,w=180,h=280;if(id==="API"){[x,y]=APIP;h=110}else[x,y]=POS[id];return{r:[x+w,y+h/2],l:[x,y+h/2],t:[x+w/2,y],b:[x+w/2,y+h]}[s]}
+/* mapa */
+function buildMap(){const cv=$("#cv");let h='';
+ for(const id in POS){const[x,y]=POS[id];h+=`<div class="fr" data-f="${id}" style="left:${x}px;top:${y}px" tabindex="0" role="button" aria-label="Abrir ${N[id].n}"><div class="fw"><div class="th">${S[id]()}</div></div><b>${N[id].n}</b></div>`}
+ h+=`<div class="api" data-api="1" style="left:${APIP[0]}px;top:${APIP[1]}px" tabindex="0" role="button"><b>APIs de checagem</b><br><span class="s" style="color:var(--t2)">A: Google Fact Check<br>B: GDELT<br>Clique para ver amostras</span></div>`;
+ let sv='<svg width="1440" height="1190"><defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#5B4BDB"/></marker></defs>',lb='';
+ for(const[a,as,b,bs,t,k,d]of EG){const[x1,y1]=anc(a,as),[x2,y2]=anc(b,bs);let p;
+  if(as==="r")p=`M${x1} ${y1} C${x1+60} ${y1} ${x2-60} ${y2} ${x2} ${y2}`;else if(as==="b"&&bs==="b")p=`M${x1} ${y1} C${x1} ${y1+100} ${x2} ${y2+100} ${x2} ${y2}`;else p=`M${x1} ${y1} C${x1} ${y1+60} ${x2} ${y2-60} ${x2} ${y2}`;
+  sv+=`<path d="${p}" fill="none" stroke="#5B4BDB" stroke-width="2.5" ${d?'stroke-dasharray="7 5"':''} marker-end="url(#ar)" id="p${k}"/>`;
+  const mx=(x1+x2)/2,my=as==="b"&&bs==="b"?y1+75:(y1+y2)/2+(as==="b"?0:-0);lb+=`<button class="elab" data-e="${k}" style="left:${mx}px;top:${my}px">${t}</button>`}
+ cv.innerHTML=sv+'</svg>'+h+lb}
+let hist=["E1"],cur="E1",hints=false;
+function setMode(m){$("#mapw").style.display=m==="map"?"":"none";$("#pw").classList.toggle("on",m==="proto");$("#tm").setAttribute("aria-selected",m==="map");$("#tp").setAttribute("aria-selected",m==="proto");m==="map"?(fit(),sideMap()):go(cur,1)}
+function code(...a){return a.map(x=>`<pre>${x.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre>`).join("")}
+function apiHTML(k){if(k===1)return`<span class="fk">Consultas enviadas (amostra)</span>${code(REQA,REQB)}`;
+ if(k===2)return`<span class="fk">Respostas (amostra fictícia)</span><h3>API A: checagens</h3>${code(RESA)}<h3>API B: imprensa</h3>${code(RESB)}<p>Bloco 1 vem da API A e bloco 2 da API B. A classificação “Enganoso” é da agência, não da Pausa.</p>`;
+ return`<span class="fk">Respostas vazias (amostra)</span>${code('API A: {}','API B: {"articles":[]}')}<p>Sem conteúdo nas duas fontes, a extensão mostra “Nada encontrado” e orienta o próximo passo.</p>`}
+function sideMap(sel){const s=$("#side");if(sel&&sel.e){s.innerHTML=`<h2>Seta: ${EG.find(x=>x[5]===sel.e)[4]}</h2><p>${ED[sel.e]}</p>`;return}
+ if(sel&&sel.api){s.innerHTML=`<h2>APIs de checagem</h2><p>Chamadas feitas pela extensão e pelo bot ao clicar em Verificar. Todos os dados abaixo são fictícios.</p>${apiHTML(1)}${apiHTML(2)}`;return}
+ s.innerHTML=`<h2>Mapa do fluxo</h2><p>Cada quadro é uma tela da Sprint 1. As setas mostram o que o clique faz e qual tela é chamada.</p><ul><li>Clique em um quadro para abri-lo no protótipo clicável.</li><li>Clique em uma seta para ler o que acontece.</li><li>Clique no quadro tracejado para ver as amostras das APIs.</li></ul><p>Linha superior e central: extensão. Linha de baixo: bot.</p>`}
+function go(id,noPush){if(!noPush&&id!==cur)hist.push(id);cur=id;const sc=$("#scr");sc.innerHTML=S[id]();sc.scrollTop=0;sc.classList.toggle("hint",hints);
+ const n=N[id];$("#side").innerHTML=`<h2>${n.n}</h2><p>${n.t}</p><h3>Áreas clicáveis</h3><ul>${n.a.map(a=>`<li><b>${a[0]}</b>${a[1]?` leva a “${N[a[1]].n}”.`:""} ${a[2]}</li>`).join("")}</ul>${n.api?apiHTML(n.api):""}`;
+ document.querySelectorAll(".fr").forEach(f=>f.classList.toggle("sel",f.dataset.f===id))}
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.k);toast.k=setTimeout(()=>t.classList.remove("on"),2200)};
+$("#scr").addEventListener("click",e=>{const g=e.target.closest("[data-go]"),t=e.target.closest("[data-toast]");if(g)go(g.dataset.go);else if(t)toast(t.dataset.toast);else{const s=$("#scr");s.classList.add("flash");setTimeout(()=>s.classList.remove("flash"),700)}});
+$("#bk").onclick=()=>{if(hist.length>1){hist.pop();go(hist[hist.length-1],1)}};
+$("#rs").onclick=()=>{hist=["E1"];go("E1",1)};
+$("#hn").onclick=e=>{hints=!hints;e.target.setAttribute("aria-pressed",hints);e.target.classList.toggle("on",hints);$("#scr").classList.toggle("hint",hints)};
+$("#vm").onclick=()=>setMode("map");
+$("#tm").onclick=()=>setMode("map");$("#tp").onclick=()=>setMode("proto");
+$("#cv").addEventListener("click",e=>{const f=e.target.closest(".fr"),a=e.target.closest(".api"),l=e.target.closest(".elab");
+ if(f){hist=[f.dataset.f];setMode("proto");go(f.dataset.f,1)}else if(a){document.querySelectorAll(".elab").forEach(x=>x.classList.remove("sel"));sideMap({api:1})}else if(l){document.querySelectorAll(".elab").forEach(x=>x.classList.toggle("sel",x===l));sideMap({e:l.dataset.e})}});
+$("#cv").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){const f=e.target.closest(".fr");if(f){e.preventDefault();f.click()}}});
+function fit(){const w=$("#mapw").clientWidth-6;if(w>0)$("#cv").style.zoom=Math.max(.5,Math.min(1,w/1440))}
+addEventListener("resize",fit);
+buildMap();sideMap();fit();
+</script>
+</body>
+</html>
